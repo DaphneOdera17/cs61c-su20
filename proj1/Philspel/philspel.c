@@ -71,6 +71,11 @@ int main(int argc, char **argv) {
 unsigned int stringHash(void *s) {
   char *string = (char *)s;
   // -- TODO --
+  unsigned hash = 0;
+  for (int i = 0; i < strlen(string); i ++) {
+    hash = hash * 31 + string[i];
+  }
+  return hash % 2255;
 }
 
 /*
@@ -81,6 +86,11 @@ int stringEquals(void *s1, void *s2) {
   char *string1 = (char *)s1;
   char *string2 = (char *)s2;
   // -- TODO --
+  int res = strcmp(string1, string2);
+  if(res == 0)
+    return 1;
+  else
+    return 0;
 }
 
 /*
@@ -101,6 +111,12 @@ int stringEquals(void *s1, void *s2) {
  */
 void readDictionary(char *dictName) {
   // -- TODO --
+  FILE *dict = fopen("dictName", "r");
+  if(dict == NULL) {
+    fprintf(stderr, "No file exists!");
+    exit(1);
+  }
+  
 }
 
 /*
